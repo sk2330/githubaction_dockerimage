@@ -36,7 +36,7 @@ jobs:
         pytest
 
   build-and-publish: ##publish docker image to dockerhub
-    needs: build-and-test
+    needs: build-and-test ##needs is give so that once build and test is done it starts working else starts parallelly
     runs-on: ubuntu-latest
 
     steps:
@@ -50,7 +50,7 @@ jobs:
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        password: ${{ secrets.DOCKER_PW }}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
